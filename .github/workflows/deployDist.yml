@@ -1,6 +1,16 @@
 name: Deploy Dist
-on: [push,workflow_dispatch]
+# on: [push,workflow_dispatch]
 # on: 
+on: 
+    push:
+        branches:
+            - dev
+            - 'feature/**'
+        paths-ignore:
+            - '.github/workflows/*'
+            - README.md
+    workflow_dispatch:
+
 #     - push
 #     - workflow_dispatch
 jobs:
