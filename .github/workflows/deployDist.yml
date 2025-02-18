@@ -1,6 +1,5 @@
 name: Deploy Dist
 # on: [push,workflow_dispatch]
-# on: 
 on: 
     push:
         branches:
@@ -10,7 +9,7 @@ on:
             - '.github/workflows/*'
             - README.md
     workflow_dispatch:
-
+# on: 
 #     - push
 #     - workflow_dispatch
 jobs:
@@ -29,12 +28,12 @@ jobs:
                 node-version: 20
             # - name: Print Node Version
             #   run: node -v
-            # - name: Cache dependencies
-            #   uses: actions/cache@v4
-            #   with:
-            #     path: ~/.npm
-            #     # ubuntu-node-2312345
-            #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                # ubuntu-node-2312345
+                key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
             - name: Install Dependencies
               run: npm ci
             - name: Run Tests
@@ -50,12 +49,12 @@ jobs:
               uses: actions/setup-node@v4
               with:
                 node-version: 20
-            # - name: Cache dependencies
-            #   uses: actions/cache@v4
-            #   with:
-            #     path: ~/.npm
-            #     # ubuntu-node-2312345
-            #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                # ubuntu-node-2312345
+                key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
             - name: Install Dependencies
               run: npm ci
             - name: Build Project
